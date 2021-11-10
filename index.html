@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exxercise 1 Fetch a picture</title>
+  </head>
+  <body>
+    <h1>Fetch a Cat</h1>
+    <img src="" id="cat" width="480">
+    <script>
+      console.log('about to fetch a cat');
+
+      catchCat()
+        .then(response => {
+          //console.log('yay');
+        })
+        .catch(error => {
+          console.log('error!');
+          console.error(error);
+        });
+
+      async function catchCat() {
+        const response = await fetch('cat.jpg');
+        const blob = await response.blob();
+        document.getElementById('cat').src = URL.createObjectURL(blob);
+      }
+    </script>
+  
+</body></html>
